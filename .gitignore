@@ -91,4 +91,5 @@ ipython_config.py
 # pipenv
 
 .idea/
+media/
 
