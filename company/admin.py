@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 
 @admin.register(Employee)
 class Employee(admin.ModelAdmin):
-    list_display = ('name', 'position', 'salary', 'age', 'photo')
+    list_display = ('name', 'position', 'salary', 'age', 'department')
     autocomplete_fields = ('department',)
     search_fields = ('name', 'position')
     list_filter = ('department',)
@@ -23,4 +23,3 @@ class Employee(admin.ModelAdmin):
 class Department(admin.ModelAdmin):
     list_display = ('name', 'director')
     search_fields = ('name', 'director')
-

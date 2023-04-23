@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Employee(models.Model):
-    name = models.CharField('ФИО сотрудника', max_length=100)
+    name = models.CharField('ФИО сотрудника', max_length=100, db_index=True)
     photo = models.ImageField('Фотография')
     position = models.CharField('Должность', max_length=100)
     salary = models.FloatField('Оклад')
@@ -17,6 +17,7 @@ class Employee(models.Model):
     def __str__(self):
         return f'{self.name} - {self.position}'
 
+
 class Department(models.Model):
     name = models.CharField('Название', max_length=255)
     director = models.ForeignKey(Employee, verbose_name='Директор', related_name='mydepartment', blank=True, null=True,
@@ -27,4 +28,7 @@ class Department(models.Model):
         verbose_name_plural = 'Департаменты'
 
     def __str__(self):
-        return f'{self.name}, директор: {self.director.name}'
+        if self.director:
+            return f'{self.name}, директор: {self.director.name}'
+        else:
+            return self.name
