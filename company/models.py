@@ -3,7 +3,7 @@ from django.db import models
 
 class Employee(models.Model):
     name = models.CharField('ФИО сотрудника', max_length=100)
-    photo = models.ImageField('Фото')
+    photo = models.ImageField('Фотография')
     position = models.CharField('Должность', max_length=100)
     salary = models.FloatField('Оклад')
     age = models.IntegerField('Возраст')
